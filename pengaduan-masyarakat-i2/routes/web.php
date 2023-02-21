@@ -23,11 +23,8 @@ Route::post('/', [ReportController::class, 'store']);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', [ReportController::class, 'dashboard']);
-    Route::get('/reports', [ReportController::class, 'showReports']);
-    Route::get('/reports/{report_id}', [ReportController::class, 'showReport']);
-    Route::get('/responses', [ReportController::class, 'showResponses']);
-
-    Route::post('/reports/{report_id}', [ReportController::class, 'respond']);
+    Route::get('/{report_id}', [ReportController::class, 'showReport']);
+    Route::post('/{report_id}', [ReportController::class, 'respond']);
 });
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');

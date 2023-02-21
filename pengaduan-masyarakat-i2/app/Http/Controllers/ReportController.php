@@ -106,7 +106,7 @@ class ReportController extends Controller {
         }
 
         $view = 'report';
-        if ($request->is('/admin/*')) {
+        if ($request->is('admin/*')) {
             $view = 'respond';
         }
 
@@ -115,29 +115,31 @@ class ReportController extends Controller {
             $respondent = User::firstWhere('id', $report->respondent_id)['username'];
         }
 
-        return view('report', [
+        $username = "";
+        if (Auth::user() != null) {
+            $username = Auth::user()['username'];
+        }
+
+        return view($view, [
             'title' => 'Tinjau Aduan',
-            'respondent' => $respondent
+            'respondent' => $respondent,
+            'username' => $username
         ], compact('report'));
     }
 
-    public function showReports() {
-        $reports = Report::where('status', '==', 'BARU')->orderBy('report_timestamp')->cursorPaginate(20);
-        return view('reports', [
-            'title' => 'Daftar Aduan'
-        ], compact('reports'));
-    }
-
-    public function showResponses() {
-        $reports = Report::where('status', '!=', 'BARU')->where('respondent_id', '==', Auth::user()[1])->orderByDesc('response_timestamp')->cursorPaginate(20);
-        return view('responses', [
-            'title' => 'Daftar Respon Aduan'
-        ], compact('reports'));
-    }
-
-    public function dashboard() {
+    public function dashboard(Request $request) {
+        $username = Auth::user()['username'];
+        if ($request->show == null || $request->show == "all") {
+            $show = 'all';
+            $reports = Report::orderBy('report_timestamp', 'asc')->cursorPaginate(20);
+        } else {
+            $show = $request->show;
+            $reports = Report::where('status', $request->show)->orderBy('report_timestamp', ($show == "BARU") ? "asc" : "desc")->cursorPaginate(20)->appends($request->query());
+        }
         return view('dashboard', [
-            'title' => 'Dashboard'
-        ]);
+            'title' => 'Daftar Aduan',
+            'username' => $username,
+            'show' => $show
+        ], compact('reports'));
     }
 }
