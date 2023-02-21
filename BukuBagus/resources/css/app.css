@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .progress-warning::-moz-progress-bar {
+        --tw-bg-opacity: 1;
+        background-color: #f5d03c;
+    }
+    .progress-warning:indeterminate::after {
+        --tw-bg-opacity: 1;
+        background-color: #f5d03c;
+    }
+    .progress-warning::-webkit-progress-value {
+        --tw-bg-opacity: 1;
+        background-color: #f5d03c;
+    }
+}

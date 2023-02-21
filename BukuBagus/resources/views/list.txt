@@ -1,0 +1,12 @@
+> User open rating modal
+> Modal pulling request to /book/{book_id}/rating
+
+Tampilan:
+* Login
+admin:
+- Dashboard
+- Daftar pengajuan perubahan data
+- Tinjau pengajuan perubahan data
+user (siswa/siswi):
+- Lihat data saat ini
+- Ajukan perubahan data
