@@ -12,7 +12,7 @@
 <body>
     <div class="bg-slate-300">
         <nav class="navbar justify-between max-w-6xl mx-auto">
-            <a class="profile" href="#">
+            <a class="profile" href="/admin">
                 <img src="/assets/images/account_circle_FILL0_wght400_GRAD0_opsz48.png">
                 <p class="pl-2">{{ $username }}</p>
             </a>

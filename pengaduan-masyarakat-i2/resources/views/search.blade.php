@@ -12,12 +12,12 @@
 </head>
 
 <body class="antialiased">
-    <header class="hero min-h-screen" style="background-image: url('assets/images/photo-1670203336942-d4e3f1f38f68.jpg')">
+    <header class="hero min-h-screen"
+        style="background-image: url('/assets/images/photo-1670203336942-d4e3f1f38f68.jpg')">
         <div class="hero-content max-w-xl text-center flex-col">
             <h1 class="text-3xl">Selamat Datang di Halaman Pengaduan Masyarakat</h1>
             <p>Cari aduan Anda di sini</p>
             <form action="" method="get">
-                @csrf
                 <input type="text" name="nik" id="nik" class="input input-bordered" placeholder="NIK"
                     minlength="16" maxlength="16">
                 <input type="submit" value="Cari" class="btn btn-primary">

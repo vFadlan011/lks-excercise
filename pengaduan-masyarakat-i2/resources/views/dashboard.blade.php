@@ -21,7 +21,7 @@
     </div>
     <main class="max-w-6xl mx-auto mt-4 p-2">
         <h1 class="text-2xl">Dashboard Admin</h1>
-        <p>Daftar aduan masyarakat yang belum direspon, diurutkan dari yang terbaru.</p>
+        <p>Daftar aduan masyarakat.</p>
         <div id="filter" class="mt-4 max-w-[768px] mx-auto">
             <form action="" method="get">
                 <div class="form-control flex-row justify-between max-w-xs">

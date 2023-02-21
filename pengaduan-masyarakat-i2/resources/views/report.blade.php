@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <td>Tanggal Aduan</td>
-                    <td><?php echo date('D, j M  Y, H:i:s', $report->report_timestamp); ?></td>
+                    <td>{{ date('D, j M  Y, H:i:s', $report->report_timestamp) }}</td>
                 </tr>
                 <tr>
                     <td>Status</td>
@@ -94,8 +94,62 @@
         @if ($report->status == 'BARU')
             <p class="text-red-800 mt-2">Aduan belum direspon</p>
         @else
-            <table>
-            </table>
+            <div class="overflow-x-auto">
+                <table class="mt-4 min-w-[280px]">
+                    <tr>
+                        <td class="w-32">Responden</td>
+                        <td>{{ $respondent }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal respon</td>
+                        <td>{{ date('D, j M  Y, H:i:s', $report->response_timestamp) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Respon</td>
+                        <td>{{ $report->response_msg }}</td>
+                    </tr>
+                    <tr>
+                        <td>Foto 1</td>
+                        @if ($report->response_img_1 != null)
+                            <td><img src="/storage/{{ $report->response_img_1 }}" alt="Foto 1"></td>
+                        @else
+                            <td class="text-red-800">Tidak dilampirkan</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Foto 2</td>
+                        @if ($report->response_img_2 != null)
+                            <td><img src="/storage/{{ $report->response_img_2 }}" alt="Foto 2"></td>
+                        @else
+                            <td class="text-red-800">Tidak dilampirkan</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Foto 3</td>
+                        @if ($report->response_img_3 != null)
+                            <td><img src="/storage/{{ $report->response_img_3 }}" alt="Foto 3"></td>
+                        @else
+                            <td class="text-red-800">Tidak dilampirkan</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Foto 4</td>
+                        @if ($report->response_img_4 != null)
+                            <td><img src="/storage/{{ $report->response_img_4 }}" alt="Foto 4"></td>
+                        @else
+                            <td class="text-red-800">Tidak dilampirkan</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Foto 5</td>
+                        @if ($report->response_img_5 != null)
+                            <td><img src="/storage/{{ $report->response_img_5 }}" alt="Foto 5"></td>
+                        @else
+                            <td class="text-red-800">Tidak dilampirkan</td>
+                        @endif
+                    </tr>
+                </table>
+            </div>
         @endif
     </main>
     @include('partials.footer')

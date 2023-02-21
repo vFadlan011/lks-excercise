@@ -89,6 +89,8 @@ class ReportController extends Controller {
         $validatedData['respondent_id'] = Auth::user()['id'];
         $report = Report::firstWhere('id', $report_id);
         $report->update($validatedData);
+
+        return redirect("/admin?show=$request->status");
     }
 
     public function search(Request $request) {
